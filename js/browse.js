@@ -52,10 +52,22 @@ Browse.loadEpisode = function(showid, episodeid, updateHistory = true){
   Browse.loadContent(`/show/${showid}/episode/${episodeid}`,updateHistory, {"stateType":"episode", "showId":showid, "episodeId":episodeid});
 }
 
-document.getElementById('join').onclick=function(){
+if(document.getElementById('join')){
+    document.getElementById('join').onclick=function(){
         window.open('/join', '_self')
         }
+}
 
 document.getElementById('login').onclick=function(){
         window.open('/signin', '_self')
         }
+
+function myFunction() {
+  var popup = $("#myPopup");
+  popup.css("visibility", "visible");
+}
+
+function myFunction2() {
+  var popup = $("#myPopup");
+  popup.css("visibility", "hidden");
+}

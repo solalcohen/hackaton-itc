@@ -1,5 +1,5 @@
     <h1>Hello admin from community n°3 ! </h1>
-    <h3>Choose your categorie</h3>
+    <h3>Choose your desired category</h3>
     <div class="browse">
         % for article in result:
             <article class="clickable shadowed" onclick="Browse.loadShow('{{article['id']}}')">

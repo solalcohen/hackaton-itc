@@ -8,7 +8,7 @@ import pymysql
 connection = pymysql.connect(host='localhost',
                              user='root',
                              password='17011993',
-                             db='hackaton18',
+                             db='new_schema',
                              charset='utf8',
                              cursorclass=pymysql.cursors.DictCursor)
 
@@ -39,13 +39,13 @@ def index():
 @get("/how")
 def how():
     sectionTemplate = "./templates/howwork.tpl"
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
 
 
 @get("/ourPartners")
 def partners():
     sectionTemplate = "./templates/partners.tpl"
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
 
 
 @route('/store')
@@ -56,14 +56,14 @@ def browse():
         result = cursor.fetchall()
     sectionTemplate = "./templates/store1.tpl"
     sectionData = result
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
                     sectionData=sectionData)
 
 
 @route('/contact')
 def search():
     sectionTemplate = "./templates/contact.tpl"
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
                     sectionData={})
 
 def requiers_login(handler_method):
@@ -104,7 +104,7 @@ def handleLogin(request):
         redirect('/store')
     else:
         context = {"err_msg": "Wrong nickname or password"}
-        return template("./pages/index.html",version=utils.getVersion(), sectionTemplate="./templates/login.tpl", **context, sectionData={})
+        return template("./pages/logged.html",version=utils.getVersion(), sectionTemplate="./templates/login.tpl", **context, sectionData={})
 
 
 def verifyUser(email, password):
@@ -150,21 +150,22 @@ def search_result():
 @route('/show/<number>')
 def show(number):
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM products WHERE id_category={}".format(number)
+        sql = "SELECT id_product,pr.product_name, pr.product_image, price, sup.supermarket_name, sup.supermarket_image, cat.id as category_id FROM prices  as p1 inner join supermarkets as sup on p1.id_supermarket = sup.id inner join products as pr on  p1.id_product = pr.id inner join categories as cat on pr.id_category = cat.id group by id_product,pr.product_name, pr.product_image, price, sup.supermarket_name, sup.supermarket_image having price <= (select min(p2.price) from prices as p2 where p2.id_product = p1.id_product group by p2.id_product) and category_id ={} order by price;".format(number)
         cursor.execute(sql)
         result = cursor.fetchall()
         print(result)
     sectionTemplate = "./templates/store2.tpl"
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
                     sectionData=result)
 
 
 @route('/ajax/show/<number>')
 def show(number):
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM products WHERE id_category={}".format(number)
+        sql = "SELECT id_product,pr.product_name, pr.product_image, price, sup.supermarket_name, sup.supermarket_image, cat.id as category_id FROM prices  as p1 inner join supermarkets as sup on p1.id_supermarket = sup.id inner join products as pr on  p1.id_product = pr.id inner join categories as cat on pr.id_category = cat.id group by id_product,pr.product_name, pr.product_image, price, sup.supermarket_name, sup.supermarket_image having price <= (select min(p2.price) from prices as p2 where p2.id_product = p1.id_product group by p2.id_product) and category_id ={} order by price;".format(number)
         cursor.execute(sql)
         result = cursor.fetchall()
+        print(result)
     return template("./templates/store2.tpl", result=result)
 
 
@@ -177,7 +178,7 @@ def show(number, episode_number):
     for episode in episodes:
         if str(episode["id"]) == episode_number:
             result_episode = episode
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
                     sectionData=result_episode)
 
 
@@ -195,13 +196,9 @@ def show(number, episode_number):
 @error(404)
 def error404(error):
     sectionTemplate = "./templates/404.tpl"
-    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
+    return template("./pages/logged.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
 
 
-# @error(500)
-# def error500(error):
-#     sectionTemplate = "./templates/404.tpl"
-#     return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
 
 
 run(host='0.0.0.0', debug=True, port=os.environ.get('PORT', 5000))

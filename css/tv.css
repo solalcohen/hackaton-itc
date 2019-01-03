@@ -85,7 +85,9 @@ main{
     height: calc(100vh - 43px);
     background-color:gainsboro;
 }
-
+.fa-star:before {
+    content: "\f20b" !important;
+}
 section{
     width: 100%;
     overflow: auto;
@@ -233,6 +235,7 @@ BROWSE
 .browse{
     display:flex;
     flex-wrap: wrap;
+    padding-bottom: 60px;
 }
 
 .browse article{
@@ -256,14 +259,36 @@ BROWSE
 }
 
 
-.browse .rating {
+.browse .price {
     position: absolute;
     top: 0;
     left: 0;
     padding: 7px;
     background-color: white;
-    color: orange;
+    color: red;
     z-index:12;
+    border-radius: 50%;
+}
+
+.browse .logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px;
+    background-color: white;
+    z-index: 12;
+    border-radius: 6%;
+    width: 60px;
+}
+.browse .logo img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px;
+    background-color: white;
+    z-index: 12;
+    border-radius: 6%;
+    width: 60px;
 }
 
 .browse .rating .average{
@@ -392,4 +417,21 @@ section .login button{
     content: "";
     display: table;
     clear: both;
+}
+.browse #modal{
+    display:none;
+}
+#myPopup.show {
+    visibility: hidden;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    border: 1px solid black;
+    height: 90px;
+    width: 180px;
+    z-index: 2000;
+    position: absolute;
+    top: 30px;
+    left: 321px;
+    border-radius: 10px;
+    background-color: #8cdd8c;
 }
