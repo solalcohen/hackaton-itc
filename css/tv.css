@@ -1,0 +1,395 @@
+html, body{
+    margin:0px;
+    font-family:Arial;
+    overflow: hidden;
+}
+
+.title{
+    color:white;
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+    padding:0px;
+    margin:0px;
+}
+
+[onclick], .clickable{
+    cursor: pointer;
+}
+
+.back .join{
+    float: right;
+    background-color: rgb(140, 221, 140);
+    border-radius: 32%;
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 30px;
+    outline: 0;
+
+
+
+}
+
+.back .login{
+    float: right;
+    background-color: rgb(140, 221, 140);
+    border-radius: 32%;
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 30px;
+    outline: 0;
+
+}
+.shadowed{
+    -webkit-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color: rgb(140, 221, 140);
+    font-family: 'fantasy';
+    font-size:22px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 3px solid white;
+    box-sizing: border-box;
+    z-index:1;
+    position: relative;
+}
+
+header nav{
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+header nav:hover{
+    background-color: rgba(255,255,255,0.4);
+}
+
+main{
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 43px);
+    background-color:gainsboro;
+}
+
+section{
+    width: 100%;
+    overflow: auto;
+    height: auto;
+    text-align: left;
+    padding: 20px;
+    color: white;
+    text-align: -webkit-center;
+}
+
+section h1{
+    font-family: 'Cairo';
+    font-size: 40px;
+    color: black;
+    margin-top: 0px;
+    line-height: 40px;
+}
+
+section h2{
+    margin-top: 0px;
+    font-size: 26px;
+    font-family: Cairo;
+    color: black;
+    text-decoration: underline;
+}
+
+section p{
+    max-width: 50%;
+    margin: auto;
+    color: darkslategray;
+}
+
+.logo{
+    width: 120px;
+    border-bottom-left-radius: 29px;
+    border-bottom-right-radius: 30px;
+    padding: 20px;
+}
+
+#divider{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #9370DB;
+    text-align: center;
+    z-index: 12345678;
+    height: 75px;
+    position: absolute;
+    top: 100%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: 3px solid white;
+    border-top: 3px solid #9370DB;
+    box-sizing: border-box;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#dynamic.loading{
+    background-image: url(/images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:100px;
+}
+
+#explainHow{
+    text-align: center;
+}
+
+#explainHow h1{
+    margin: 20px;
+}
+
+
+.diapo {
+    background-image: url('../images/food.jpg');
+    background-size:cover;
+    margin: auto;
+    margin-top: 3%;
+    border: 1px solid black;
+    height: 55%;
+    width: 58%;
+}
+
+.carousel img {
+    height: 498px;
+}
+/*************************************
+
+HOW
+
+*************************************/
+
+#stepPage {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 90px;
+}
+
+#bigImageLeft {
+    padding-left: 10px;
+}
+
+#howTitle {
+    margin-bottom: 10px;
+}
+
+#stepsCont {
+    margin-top: 10px;
+}
+.stepTitle{
+color:#8cdd8c;
+}
+
+
+/*************************************
+
+PARTNERS
+
+*************************************/
+
+#partners{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#partners img{
+    margin: 10px;
+    width: 15vw;
+}
+
+#partnersTitle{
+    text-align: center;
+    margin: 7vh;
+    color: #212529;
+}
+/*************************************
+
+BROWSE
+
+*************************************/
+.browse{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.browse article{
+    position:relative;
+    margin: 10px;
+    border: 2px solid white;
+    background-color: black;
+    text-align: center;
+
+}
+
+.browse .cover-holder{
+    height: 200px;
+    width: 240px;
+    overflow: hidden;
+}
+
+.browse .show-cover {
+    width: 240px;
+    height: 210px;
+}
+
+
+.browse .rating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 7px;
+    background-color: white;
+    color: orange;
+    z-index:12;
+}
+
+.browse .rating .average{
+    vertical-align: middle;
+}
+
+.browse .rating .fa-star{
+    margin-right:4px;
+}
+
+/*************************************
+
+SHOW
+
+*************************************/
+
+.show{
+    display:flex;
+    flex-direction: column;
+}
+
+.show article{
+    margin: 10px;
+    border: 2px solid white;
+    background-color: black;
+    text-align: center;
+    width: 200px;
+    transition: box-shadow 0.5s linear;
+    width: 290px;
+    text-align: -webkit-center;
+}
+
+.show article:hover{
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    -moz-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+}
+
+.show article:hover .show-name{
+    opacity:1;
+}
+
+.show-name{
+    transition:opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.show .cover-holder{
+    height: 120px;
+    overflow: hidden;
+}
+
+.show .show-cover {
+    width: 200px;
+    transition-property: transform;
+    transition-duration: 5s;
+}
+
+
+.show .season{
+    display:flex;
+    flex-wrap: wrap;
+ }
+
+.show .season-title{
+  flex:1;
+  min-width:100%;
+}
+
+.show .season-title:not(.shown) ~ article{
+    display:none;
+}
+
+.show .show-name {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.show .fa-film{
+    margin-right: 15px;
+}
+
+/*************************************
+
+EPISODE
+
+*************************************/
+.episode img{
+    width:400px;
+}
+
+/*************************************
+
+CONTACT US
+
+*************************************/
+.container1 {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    height: 100%;
+}
+
+.container1 label{
+    color: black;
+}
+/* Create two columns that float next to eachother */
+.column1 {
+    width: 13%;
+    margin-top: 6px;
+    padding: 20px;
+}
+
+/* Clear floats after the columns */
+.line1 {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+section .login span{
+ color:black;
+}
+
+section .login button{
+    content: "";
+    display: table;
+    clear: both;
+}
